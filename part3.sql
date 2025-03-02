@@ -53,3 +53,21 @@ sign은 해당 숫자가 양수면 1, 음수면 -1을 출력
 
  select sign(-25) from dual;
  select sign(8) from dual;
+
+ /*
+'_' 혹은 '%'가 포함된 문자를 검색하고자 할때 escape을 지정해서 쿼리를 작성할 수 있다.
+escape '#'로 지정해주면 '#%' 혹은 '#_'가 문자 그대로 인식될 수 있다.
+ */
+
+col1    col2
+1       %A
+3       C%
+
+select * from sample
+where col2 like '%#%%' escape '#';
+
+/*
+substr의 두번째 인수가 음수일 경우 뒤에서부터 5번째자리 즉 X부터 3자리 XPE가 출력된다.
+결과: XPE
+*/
+select substr('sql expert', -5, 3) from dual;
